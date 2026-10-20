@@ -34,4 +34,6 @@ and publishes the demo to GitHub Pages after changes are merged into `main`.
 
 ## Demo
 
+[GitHub Pages](https://andrii-dolzhenko.github.io/njs-homework-02-async-fs/)
+
 Run `npm run build`, then open `dist/index.html` with VS Code Live Server.
