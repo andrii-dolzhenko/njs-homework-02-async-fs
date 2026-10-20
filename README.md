@@ -1,39 +1,37 @@
-# Async File System
+# Node.js Homework 02 — Async File System
 
-Three async Node.js functions for writing, reading, and deleting files with `fs/promises`.
-
-- `writeFileAsync(filename, content)` creates or overwrites a file. On failure, it logs and returns the error.
-- `readFileAsync(filename)` reads UTF-8 text. On failure, it logs and returns `null`.
-- `deleteFileAsync(filename)` deletes a file and logs the result. Errors are handled without rethrowing.
-
-Missing files are reported separately when reading or deleting. Console messages follow the assignment's Ukrainian wording.
+Three functions for writing, reading, and deleting files with Node.js
+`fs/promises`, using `async/await` and error handling.
 
 ## Run and test
 
-Requires Node.js 24. Install the test dependencies:
+Requires Node.js 24.
 
-```sh
+```bash
 npm install --package-lock=false
-npm test
+npm run check
 ```
 
-- `npm test` runs the teacher's 8 Vitest tests without modifications.
-- `npm run test:files` checks real files in a temporary directory and cleans up afterward.
-- `npm run build` generates the browser demo in `dist/`.
-- `npm run check` checks syntax, runs both sets of checks, and builds the demo.
+- `npm test` — run 8 automated tests using Vitest.
+- `npm run test:files` — check operations on real temporary files.
+- `npm run build` — generate the demo in `dist/index.html`.
+- `npm run check` — check syntax, run tests and real-file checks, and build the demo.
 
-The implementation is in `src/main.js`. Teacher tests are in `src/__test__/`.
+Writing creates or overwrites a file. Reading returns UTF-8 text.
+Missing files are reported separately when reading or deleting.
+On failure, writing returns the error, reading returns `null`, and deletion
+logs the error without rethrowing.
+The solution is in `src/main.js`; `demo/` and `scripts/` provide the demo page.
+
+The interactive demo uses the same functions as the Node.js solution with a
+browser filesystem adapter. Enter a filename and text, then write, read, or
+delete the file. Virtual files stay in browser memory and are cleared on
+reset or page reload. The expandable Node.js example is generated using real
+temporary files during the build.
+
+The core functions use built-in Node.js APIs. GitHub Actions runs the checks
+and publishes the demo to GitHub Pages after changes are merged into `main`.
 
 ## Demo
 
-Build the demo and serve `dist/` with a local static server, such as VS Code Live Server. Open `dist/index.html` through that server.
-
-The playground supports writing, overwriting, reading, and deleting virtual files. It also shows file sizes, results, and an operation log. Files exist only in browser memory and disappear after a page reload or reset.
-
-The build reuses `src/main.js`, changing only its filesystem import to the browser adapter. No file-operation handlers are duplicated. The expandable Node.js example is generated using real temporary files during the build.
-
-## Credits
-
-Assignment and original Vitest tests: [Andrii Fomenko](https://github.com/FomenkoAndrey/nodejs-hw02-tests).
-
-© 2026 Andrii Dolzhenko. All Rights Reserved.
+Run `npm run build`, then open `dist/index.html` with VS Code Live Server.
